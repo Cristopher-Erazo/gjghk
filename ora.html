@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juego de Puntaje</title>
+  <style>
+    :root {
+      --panel-width: 200px;
+      --panel-height: 150px;
+      --font-size: 20px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      font-size: var(--font-size);
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      background-color: #000;
+      color: #fff;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin: 50px 0 20px 0;
+    }
+
+    .panel {
+      width: var(--panel-width);
+      height: var(--panel-height);
+      background-color: #ffffff;
+      border: 2px solid #333;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .panel:hover {
+      background-color: #eaeaea;
+      transform: scale(1.05);
+    }
+
+    .panel-label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .panel-score {
+      font-size: 26px;
+      color: #007acc;
+    }
+
+    .descripcion {
+      margin: 30px 20px;
+      max-width: 800px;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <!-- Puedes cambiar el logo aquí -->
+      <img src="img/uey.png">
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="panel" onclick="incrementScore(0)">
+      <div class="panel-label">Panel 1</div>
+      <div class="panel-score" id="score0">0</div>
+    </div>
+    <div class="panel" onclick="incrementScore(1)">
+      <div class="panel-label">Panel 2</div>
+      <div class="panel-score" id="score1">0</div>
+    </div>
+  </div>
+
+  <div class="descripcion">
+    Haz clic en cualquiera de los paneles para aumentar su puntaje individual. Puedes cambiar el logo desde el HTML fácilmente.
+  </div>
+
+  <script>
+    let scores = [0, 0];
+
+    function incrementScore(panelIndex) {
+      scores[panelIndex]++;
+      document.getElementById(`score${panelIndex}`).textContent = scores[panelIndex];
+    }
+  </script>
+
+</body>
+</html>
